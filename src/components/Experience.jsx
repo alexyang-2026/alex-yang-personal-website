@@ -10,6 +10,7 @@ const events = [
     caption: 'Scholarship Winner · Piano',
     date: '2016',
     frame: 'portrait',
+    tags: ['Music'],
   },
 
   {
@@ -17,6 +18,7 @@ const events = [
     caption: 'Beethoven Piano Concerto No. 1',
     date: '2019',
     frame: 'landscape',
+    tags: ['Music'],
   },
 
   {
@@ -24,6 +26,7 @@ const events = [
     caption: 'Young Artist Program · Piano',
     date: '2021',
     frame: 'portrait',
+    tags: ['Music'],
   },
 
   {
@@ -31,6 +34,7 @@ const events = [
     caption: 'Piano · Performance',
     date: '2022',
     frame: 'landscape',
+    tags: ['Music'],
   },
 
   {
@@ -38,6 +42,7 @@ const events = [
     caption: 'Piano · New York',
     date: '2022',
     frame: 'portrait',
+    tags: ['Music'],
   },
 
   {
@@ -45,6 +50,7 @@ const events = [
     caption: 'Piano · Italy',
     date: '2023',
     frame: 'landscape',
+    tags: ['Music'],
   },
 
   {
@@ -52,6 +58,7 @@ const events = [
     caption: 'Mendelssohn Piano Concerto No. 1',
     date: '2023',
     frame: 'landscape',
+    tags: ['Music'],
   },
 
   {
@@ -59,6 +66,7 @@ const events = [
     caption: 'Founder · 50+ Students · Music Education',
     date: '2023',
     frame: 'square',
+    tags: ['Music', 'Communication'],
   },
 
   {
@@ -66,6 +74,7 @@ const events = [
     caption: 'Python · music21 · Music Research',
     date: '2023',
     frame: 'film',
+    tags: ['Music', 'Tech', 'Research'],
   },
 
   {
@@ -73,6 +82,7 @@ const events = [
     caption: 'Musicology · Performance Research',
     date: '2024',
     frame: 'portrait',
+    tags: ['Music', 'Research'],
   },
 
   {
@@ -80,6 +90,7 @@ const events = [
     caption: 'Director · Filmmaker · Editor',
     date: '2024',
     frame: 'film',
+    tags: ['Tech', 'Communication'],
   },
 
   {
@@ -87,6 +98,7 @@ const events = [
     caption: 'Education · Resource Design',
     date: '2024',
     frame: 'landscape',
+    tags: ['Tech', 'Communication'],
   },
 
   {
@@ -94,6 +106,7 @@ const events = [
     caption: 'Weekly Lecture-Recitals · 25+ Seniors',
     date: '2024',
     frame: 'portrait',
+    tags: ['Music', 'Communication'],
   },
 
   {
@@ -101,6 +114,7 @@ const events = [
     caption: 'Concerto Performance',
     date: '2024',
     frame: 'landscape',
+    tags: ['Music'],
   },
 
   {
@@ -108,8 +122,16 @@ const events = [
     caption: 'Full-Fellowship Pianist',
     date: '2025',
     frame: 'portrait',
+    tags: ['Music'],
   },
 ]
+
+const categoryColors = {
+  Music: 'red',
+  Tech: 'blue',
+  Communication: 'limegreen',
+  Research: 'orange',
+}
 
 
 function EventCard({ event }) {
@@ -126,9 +148,22 @@ function EventCard({ event }) {
       </div>
 
       <div className="experience-caption">
-        <span>{event.date}</span>
+        <span className="experience-date">{event.date}</span>
         <h3>{event.title}</h3>
         <p>{event.caption}</p>
+
+        <ul className="experience-tags" aria-label={`${event.title} categories`}>
+          {event.tags.map((tag) => (
+            <li key={tag}>
+              <span
+                className="experience-tag-dot"
+                style={{ '--tag-color': categoryColors[tag] }}
+                aria-hidden="true"
+              />
+              {tag}
+            </li>
+          ))}
+        </ul>
       </div>
 
     </article>
