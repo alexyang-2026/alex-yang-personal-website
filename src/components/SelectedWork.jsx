@@ -72,7 +72,13 @@ function SelectedWork() {
     }
 
     return (
-        <section className="project-gallery" id="work">
+        <section className="selected-work" id="work" aria-labelledby="selected-work-title">
+          <div className="selected-work-header">
+            <h2 id="selected-work-title">Selected Projects</h2>
+          </div>
+
+          <div className="selected-work-screen">
+          <div className="project-gallery">
             
             {/*
             This is the visible "window" of the gallery.
@@ -149,7 +155,6 @@ function SelectedWork() {
             
             {/* These controls live outside of the gallery track, therefore they remain stationary while the projects slide underneath them */}
             <div className={`gallery-interface ${projects[currentProject].theme}`}>
-                <p className="gallery-label">Selected Projects</p>
                 <div className="gallery-controls">
 
                     <button
@@ -174,6 +179,8 @@ function SelectedWork() {
 
                 </div>
             </div>
+          </div>
+          </div>
         </section>
     )
 }

@@ -1,13 +1,87 @@
+.selected-work {
+  width: 100%;
+  padding: clamp(64px, 9vw, 110px) 48px;
+  background: #ffffff;
+  color: #211d18;
+}
+
+.selected-work-header {
+  width: min(100%, 820px);
+  margin: 0 auto 24px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.selected-work-header h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3.4vw, 2.8rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.selected-work-screen {
+  position: relative;
+  width: min(100%, 820px);
+  margin: 0 auto;
+  padding: 10px;
+  background: #171715;
+  border: 1px solid #080807;
+  border-radius: 18px;
+  transform: perspective(1200px) rotateX(2deg) rotateY(-1deg) translateY(-6px);
+
+  /*
+    Each shadow uses this value order:
+    horizontal offset | vertical offset | blur radius | color | optional inset
+
+    Commas let one box have several shadow layers. The layers below combine
+    edge highlights with soft shadows to create the screen's depth.
+  */
+
+  box-shadow:
+    /* 0 horizontal, 1px down, no blur: highlight inside the top edge */
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    /* No offset or blur, with a 1px spread: faint inner bezel outline */
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    /* 2px left and up, no blur: light catching the upper-left edge */
+    -2px -2px 0 rgba(255, 255, 255, 0.12),
+    /* 10px right, 14px down, 20px blur: dark contact shadow near the screen */
+    10px 14px 20px rgba(33, 29, 30, 0.50),
+    /* 20px right, 35px down, 70px blur: large soft shadow for elevation */
+    20px 35px 70px rgba(33, 29, 30, 0.50);
+
+  transition: transform 400ms ease, box-shadow 400ms ease;
+}
+
+.selected-work-screen:hover {
+  transform: perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(-12px) scale(1.01);
+  box-shadow:
+    /* Brighter inner top-edge highlight on hover */
+    0 1px 0 rgba(255, 255, 255, 0.2) inset,
+    /* Brighter inner bezel outline on hover */
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    /* Brighter upper-left edge on hover */
+    -2px -2px 0 rgba(255, 255, 255, 0.14),
+    /* Close shadow moves farther away as the screen lifts */
+    12px 18px 25px rgba(33, 29, 24, 0.2),
+    /* Large shadow spreads farther to reinforce the hover lift */
+    24px 45px 85px rgba(33, 29, 24, 0.3);
+}
+
 .project-gallery {
   position: relative;
 
   width: 100%;
+  margin: 0 auto;
 
-  /* Main height control for the entire gallery. */
-  height: 78vh;
-  min-height: 620px;
+  /* The carousel sits inside a smaller, device-like screen. */
+  height: clamp(440px, 48vw, 540px);
+  min-height: 0;
 
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
 
   color: white;
 }
@@ -111,11 +185,8 @@
 .gallery-slide-content h2 {
   margin: 0;
 
-  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-size: medium;
   font-weight: 400;
-
-  line-height: 0.9;
-  letter-spacing: -0.04em;
 
   color: var(--gallery-text);
 }
@@ -131,9 +202,10 @@
   display: block;
 
   width: 100%;
-  height: auto;
+  height: 400px;
 
   object-fit: contain;
+  margin-top: 0;
 }
 
 
@@ -174,23 +246,6 @@
 
   /* Prevent this invisible full-screen layer from blocking clicks on the project itself. */
   pointer-events: none;
-}
-
-
-/* "Selected Projects" label in the upper-left corner. */
-.gallery-label {
-  position: absolute;
-
-  top: 28px;
-  left: 36px;
-
-  margin: 0;
-
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-
-  color: rgba(255, 255, 255, 0.8);
 }
 
 
@@ -297,4 +352,47 @@
   --interface-text: #211d18;
   --interface-border: rgba(33, 29, 24, 0.5);
   --interface-hover: rgba(33, 29, 24, 0.1);
+}
+
+@media (max-width: 640px) {
+  .selected-work {
+    padding: 52px 20px;
+  }
+
+  .selected-work-header {
+    margin-bottom: 18px;
+  }
+
+  .selected-work-screen {
+    padding: 7px;
+    border-radius: 13px;
+  }
+
+  .project-gallery {
+    height: 68svh;
+    min-height: 500px;
+    border-radius: 7px;
+  }
+
+  .gallery-slide-content {
+    padding: 62px 18px 86px;
+  }
+
+  .gallery-slide-content h2 {
+    font-size: clamp(2.6rem, 14vw, 4rem);
+  }
+
+  .gallery-project-visual {
+    width: min(86vw, 560px);
+  }
+
+  .gallery-controls {
+    bottom: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .selected-work-screen {
+    transition: none;
+  }
 }

@@ -42,7 +42,7 @@ const imageVariants = {
     hidden: {
         opacity: 0,
         scale: 1.08,
-        filter: 'blur(12px)'
+        filter: 'blur(20px)'
     },
 
     // Slowly settle into the final photograph
@@ -52,7 +52,7 @@ const imageVariants = {
         filter: 'blur(0px)',
 
         transition: {
-            duration: 1.8,
+            duration: 5,
             ease: 'easeOut',
         }
     }
