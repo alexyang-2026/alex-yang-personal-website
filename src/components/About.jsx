@@ -1,5 +1,7 @@
 import './About.css'
 import aboutImage from '../assets/about.png'
+import ElasticMesh from './ElasticMesh'
+import ScrollReveal from './ScrollReveal'
 
 function About() {
   return (
@@ -7,20 +9,28 @@ function About() {
       <div className="about-inner">
 
         <div className="about-image">
-          <img
-            src={aboutImage}
-            alt="Alex Yang"
-          />
+            <ElasticMesh
+                image={aboutImage}
+                showGrid={false}        // toggle whether we can see the mesh grid over the photo
+                interaction="hover"     // determine how the user activates the deformation
+                stiffness={0.05}        // how strongly the mesh wants to return to original shape
+                damping={0.2}           // how quickly the movement ides out
+                grabRadius={0.6}        // how large an area around the cursor gets affected
+                pull={0.4}              // how strongly the cursor deforms the photo
+                wobble={5}              // how much neighboring points of the mesh influence each other
+                tilt={3}                // tilts the entire mesh into 3D space
+                shading={0.25}          // how much fake 3D lighting appears as the photo bends (from 0-1)
+                resolution={25}
+                borderRadius={15}
+            />
         </div>
 
         <div className="about-content">
           <p className="about-label">About</p>
 
-          <h2>
-            I build, perform,
-            <br />
-            and teach.
-          </h2>
+          <ScrollReveal>
+            I build, perform, and teach.
+          </ScrollReveal>
 
           <div className="about-copy">
             <p>
