@@ -173,10 +173,32 @@
   }
 
   .contact-main h2 {
-    font-size: clamp(42px, 12vw, 60px);
+    font-size: clamp(36px, 11vw, 54px);
   }
 
   .contact-links {
-    gap: 18px;
+    flex-wrap: wrap;
+    gap: 14px 20px;
+  }
+
+  .contact-email {
+    min-height: 44px;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-bottom {
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .contact-top {
+    flex: 0 0 44px;
+    min-height: 44px;
+  }
+
+  .contact-signoff {
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
   }
 }

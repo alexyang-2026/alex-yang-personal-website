@@ -146,7 +146,27 @@ const ElasticMesh = ({
   const containerRef = useRef(null);
 
   const propsRef = useRef({});
-  propsRef.current = {
+  useEffect(() => {
+    propsRef.current = {
+      color1,
+      color2,
+      highlight,
+      showGrid,
+      gridDensity,
+      gridOpacity,
+      gridColor,
+      borderRadius,
+      stiffness,
+      damping,
+      grabRadius,
+      pull,
+      wobble,
+      tilt,
+      shading,
+      interaction,
+      enabled
+    };
+  }, [
     color1,
     color2,
     highlight,
@@ -164,7 +184,7 @@ const ElasticMesh = ({
     shading,
     interaction,
     enabled
-  };
+  ]);
 
   useEffect(() => {
     const container = containerRef.current;

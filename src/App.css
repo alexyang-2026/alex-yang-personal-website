@@ -183,11 +183,61 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 640px) {
+  .hero {
+    min-height: 100svh;
+  }
+
   .hero-nav {
-    padding-inline: 20px;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .hero-brand {
+    padding-top: 2px;
+    font-size: 0.78rem;
+  }
+
+  .hero-nav-links {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .hero-nav-links a {
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    font-size: 0.72rem;
   }
 
   .hero-content {
-    padding-inline: 20px;
+    min-height: calc(100svh - 100px);
+    padding: 20px 20px 72px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(3.8rem, 21vw, 6.2rem);
+    line-height: 0.86;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .hero-description {
+    margin-top: 22px;
+    font-size: 0.92rem;
+  }
+
+  .hero-cta {
+    min-height: 44px;
+    margin-top: 22px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-content h1 {
+    font-size: 3.7rem;
   }
 }

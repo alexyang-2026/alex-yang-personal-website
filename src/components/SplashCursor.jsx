@@ -23,6 +23,10 @@ function SplashCursor({
   const animationFrameId = useRef(null);
 
   useEffect(() => {
+    // The full-screen fluid simulation is a desktop pointer enhancement. Avoid
+    // its WebGL and touch-listener cost on phones and other touch-first devices.
+    if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 

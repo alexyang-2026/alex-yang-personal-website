@@ -226,12 +226,24 @@
   }
 
   .repertoire-header h1 {
-    font-size: clamp(58px, 19vw, 90px);
+    font-size: clamp(48px, 16vw, 72px);
   }
 
   .repertoire-tabs {
-    gap: 24px;
+    gap: 22px;
     margin-bottom: 55px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .repertoire-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .repertoire-tabs button {
+    min-height: 44px;
+    flex: 0 0 auto;
+    padding-top: 8px;
   }
 
   .composer {
@@ -247,7 +259,8 @@
   }
 
   .composer-works p {
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 1.55;
   }
 }
 
@@ -369,6 +382,12 @@
 
 /* MOBILE */
 
+@media (max-width: 900px) {
+  .tech-skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 700px) {
 
   .tech-skills {
@@ -380,6 +399,10 @@
     margin-bottom: 50px;
   }
 
+  .tech-skills-header h1 {
+    font-size: clamp(46px, 15vw, 68px);
+  }
+
   .tech-skills-grid {
     grid-template-columns: 1fr;
   }
@@ -387,6 +410,21 @@
   .tech-skill-group {
     grid-template-columns: 1fr;
 
+    gap: 18px;
+  }
+
+  .tech-skill-list span {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .repertoire-skills {
+    padding-inline: 16px;
+  }
+
+  .repertoire-tabs {
     gap: 18px;
   }
 }

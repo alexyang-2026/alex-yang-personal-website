@@ -348,6 +348,24 @@
     padding: 0 20px;
   }
 
+  .experience-piece,
+  .experience-piece.portrait,
+  .experience-piece.landscape,
+  .experience-piece.film,
+  .experience-piece.square {
+    width: min(78vw, 290px);
+  }
+
+  .experience-piece .experience-image,
+  .experience-piece.portrait .experience-image,
+  .experience-piece.landscape .experience-image,
+  .experience-piece.film .experience-image,
+  .experience-piece.square .experience-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
   .experience-piece.portrait {
     width: 210px;
   }
@@ -361,6 +379,8 @@
   }
 
   .experience-controls {
+    justify-content: center;
     padding: 32px 20px 0;
   }
+
 }

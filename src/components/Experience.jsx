@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'motion/react'
 
 import './Experience.css'
@@ -133,7 +133,6 @@ const categoryColors = {
   Research: 'orange',
 }
 
-
 function EventCard({ event }) {
   return (
     <article className={`experience-piece ${event.frame}`}>
@@ -173,6 +172,32 @@ function EventCard({ event }) {
 
 function Experience() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [trackOffset, setTrackOffset] = useState(0)
+  const galleryRef = useRef(null)
+  const trackRef = useRef(null)
+
+  useEffect(() => {
+    const gallery = galleryRef.current
+    const track = trackRef.current
+    const activeCard = track?.children[currentIndex]
+    const firstCard = track?.children[0]
+
+    if (!gallery || !track || !activeCard || !firstCard) return
+
+    function updateTrackOffset() {
+      const desiredOffset = activeCard.offsetLeft - firstCard.offsetLeft
+      const maximumOffset = Math.max(0, track.scrollWidth - gallery.clientWidth)
+      setTrackOffset(Math.min(desiredOffset, maximumOffset))
+    }
+
+    updateTrackOffset()
+
+    const resizeObserver = new ResizeObserver(updateTrackOffset)
+    resizeObserver.observe(gallery)
+    resizeObserver.observe(track)
+
+    return () => resizeObserver.disconnect()
+  }, [currentIndex])
 
   const previousEvent = () => {
     if (currentIndex > 0) {
@@ -195,12 +220,13 @@ function Experience() {
       </div>
 
 
-      <div className="experience-gallery">
+      <div className="experience-gallery" ref={galleryRef}>
 
         <motion.div
           className="experience-track"
+          ref={trackRef}
           animate={{
-            x: `calc(-${currentIndex} * (45vw + 80px))`
+            x: -trackOffset
           }}
           transition={{
             duration: 0.7,
