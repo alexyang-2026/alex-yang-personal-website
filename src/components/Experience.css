@@ -1,184 +1,328 @@
 .experience {
-  --experience-ink: #211d18;
-  --experience-muted: #716b63;
-  --experience-border: #d8d2c8;
-  --experience-surface: #f7f4ed;
-  --experience-filter: #e8e3d9;
-
   width: 100%;
-  padding: 64px 24px;
-  color: var(--experience-ink);
-  background: #ffffff;
+  padding: 80px 0 55px;
+
+  overflow: hidden;
+
+  background: #f7f6f2;
+  color: #211d18;
+}
+
+
+/* HEADING */
+
+.experience-heading {
+  padding: 0 48px;
+  margin-bottom: 60px;
+
   text-align: left;
 }
 
-.experience-inner {
-  width: min(100%, 896px);
-  margin: 0 auto;
+.experience-heading p {
+  margin: 0 0 8px;
+
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: rgba(33, 29, 24, 0.5);
 }
 
-.experience-intro {
-  margin-bottom: 36px;
-}
-
-.experience-intro h2 {
+.experience-heading h2 {
   margin: 0;
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: clamp(2.25rem, 5vw, 3rem);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
-}
 
-.experience-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-
-.experience-filter {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  color: var(--experience-muted);
-  background: var(--experience-filter);
-  border: 1px solid transparent;
-  border-radius: 999px;
   font-family: 'Fraunces', Georgia, serif;
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 48px;
+  font-weight: 400;
   line-height: 1;
-  cursor: pointer;
-  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+
+  color: #211d18;
 }
 
-.experience-filter:hover {
-  color: var(--experience-ink);
-  background: #dfd9ce;
+
+/* GALLERY */
+
+.experience-gallery {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding-top: 55px;
 }
 
-.experience-filter.active {
-  color: var(--experience-surface);
-  background: var(--experience-ink);
+
+/* RAINBOW TIMELINE */
+
+.experience-gallery::before {
+  content: '';
+
+  position: absolute;
+
+  top: 18px;
+  left: 48px;
+  right: 48px;
+
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    #df5b45 0%,
+    #e8a63a 18%,
+    #c7c943 32%,
+    #68ad67 48%,
+    #3c9bbd 65%,
+    #536cc5 82%,
+    #a64bbb 100%
+  );
 }
 
-.experience-filter:focus-visible {
-  outline: 2px solid var(--experience-ink);
-  outline-offset: 3px;
+
+/* HORIZONTAL EVENTS */
+
+.experience-track {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 32px;
+
+  width: max-content;
+
+  padding: 0 48px;
 }
 
-.experience-filter-count {
-  display: inline-flex;
-  min-width: 16px;
-  height: 16px;
+
+/* EVENT */
+
+.experience-piece {
+  position: relative;
+
+  flex-shrink: 0;
+
+  width: 290px;
+
+  text-align: left;
+}
+
+
+/* DOT ON TIMELINE */
+
+.experience-piece::before {
+  content: '';
+
+  position: absolute;
+
+  top: -41px;
+  left: 50%;
+
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #211d18;
+
+  transform: translateX(-50%);
+}
+
+
+/* IMAGE FRAME */
+
+.experience-image {
+  width: 100%;
+  height: 190px;
+
+  overflow: hidden;
+
+  background: #e9e7e1;
+
+  border: 1px solid rgba(33, 29, 24, 0.12);
+}
+
+.experience-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/*
+  Keep the frames relatively small.
+  Frame type only slightly changes proportions.
+*/
+
+.experience-piece.portrait {
+  width: 230px;
+}
+
+.experience-piece.portrait .experience-image {
+  height: 280px;
+}
+
+
+.experience-piece.landscape {
+  width: 330px;
+}
+
+.experience-piece.landscape .experience-image {
+  height: 210px;
+}
+
+
+.experience-piece.film {
+  width: 360px;
+}
+
+.experience-piece.film .experience-image {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+
+.experience-piece.square {
+  width: 250px;
+}
+
+.experience-piece.square .experience-image {
+  aspect-ratio: 1;
+  height: auto;
+}
+
+
+/* CAPTION */
+
+.experience-caption {
+  margin-top: 16px;
+}
+
+.experience-caption span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 11px;
+  letter-spacing: 0.12em;
+
+  color: rgba(33, 29, 24, 0.48);
+}
+
+.experience-caption h3 {
+  margin: 0;
+
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.15;
+
+  color: #211d18;
+}
+
+.experience-caption p {
+  margin: 6px 0 0;
+
+  font-size: 13px;
+  line-height: 1.4;
+
+  color: rgba(33, 29, 24, 0.58);
+}
+
+
+/* CONTROLS */
+
+.experience-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 14px;
+
+  padding: 38px 48px 0;
+}
+
+.experience-controls button {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding-inline: 4px;
-  color: inherit;
-  background: rgba(113, 107, 99, 0.14);
-  border-radius: 999px;
-  font-size: 0.62rem;
-  font-variant-numeric: tabular-nums;
-}
 
-.experience-filter.active .experience-filter-count {
-  background: rgba(247, 244, 237, 0.2);
-}
-
-.experience-list {
-  overflow: hidden;
-  padding: 0 24px;
-  background: var(--experience-surface);
-  border: 1px solid var(--experience-border);
-  border-radius: 12px;
-}
-
-.experience-list ul {
-  margin: 0;
   padding: 0;
-  list-style: none;
+
+  border: 1px solid rgba(33, 29, 24, 0.25);
+  border-radius: 50%;
+
+  background: transparent;
+  color: #211d18;
+
+  font-size: 17px;
+
+  cursor: pointer;
 }
 
-.experience-row {
-  border-bottom: 1px solid var(--experience-border);
+.experience-controls button:hover:not(:disabled) {
+  background: rgba(33, 29, 24, 0.06);
 }
 
-.experience-row:last-child {
-  border-bottom: 0;
+.experience-controls button:disabled {
+  opacity: 0.2;
+  cursor: default;
 }
 
-.experience-row article {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
-  gap: 28px;
-  padding: 24px 0;
-  transition: opacity 160ms ease;
+.experience-controls span {
+  min-width: 40px;
+
+  text-align: center;
+
+  font-size: 11px;
+  letter-spacing: 0.08em;
+
+  color: rgba(33, 29, 24, 0.5);
 }
 
-.experience-row:hover article {
-  opacity: 0.72;
-}
 
-.experience-row h3 {
-  margin: 0;
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 1.18rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.22;
-}
-
-.experience-role {
-  margin: 7px 0 0;
-  color: var(--experience-muted);
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 0.7rem;
-  line-height: 1.4;
-}
-
-.experience-row-copy {
-  font-family: 'Fraunces', Georgia, serif;
-}
-
-.experience-summary,
-.experience-details {
-  margin: 0;
-  line-height: 1.55;
-}
-
-.experience-summary {
-  color: var(--experience-ink);
-  font-size: 0.8rem;
-}
-
-.experience-details {
-  margin-top: 8px;
-  color: var(--experience-muted);
-  font-size: 0.73rem;
-}
-
-@media (max-width: 640px) {
+/* MOBILE */
+@media (max-width: 700px) {
   .experience {
-    padding: 48px 16px;
+    padding: 65px 0 40px;
   }
 
-  .experience-intro {
-    margin-bottom: 28px;
+  .experience-heading {
+    padding: 0 20px;
+    margin-bottom: 50px;
   }
 
-  .experience-filters {
-    margin-bottom: 20px;
+  .experience-heading h2 {
+    font-size: 38px;
   }
 
-  .experience-list {
-    padding: 0 18px;
+  .experience-gallery::before {
+    left: 20px;
+    right: 20px;
   }
 
-  .experience-row article {
-    grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 22px 0;
+  .experience-track {
+    gap: 24px;
+    padding: 0 20px;
+  }
+
+  .experience-piece.portrait {
+    width: 210px;
+  }
+
+  .experience-piece.landscape {
+    width: 290px;
+  }
+
+  .experience-piece.film {
+    width: 310px;
+  }
+
+  .experience-controls {
+    padding: 32px 20px 0;
   }
 }

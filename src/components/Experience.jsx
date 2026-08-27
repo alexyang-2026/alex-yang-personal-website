@@ -1,107 +1,216 @@
 import { useState } from 'react'
+import { motion } from 'motion/react'
+
 import './Experience.css'
 
-const filters = ['All', 'Music', 'Education', 'Communication', 'Leadership']
 
-const experiences = [
+const events = [
   {
-    id: 'golden-melodies',
-    title: 'Unveiling Golden Melodies of the Past',
-    role: 'Founder & Presenter',
-    dates: '2024–2026',
-    summary:
-      'A two-year lecture-recital series at The Berkeley combining classical piano performance with education and storytelling.',
-    details:
-      'I founded, designed, and marketed the series and personally presented every program. I selected and performed the repertoire, researched and developed the educational material, and translated musical and musicological ideas into accessible spoken commentary for general audiences.',
-    categories: ['Music', 'Leadership', 'Communication'],
+    title: 'Nova Scotia Talent Trust',
+    caption: 'Scholarship Winner · Piano',
+    date: '2016',
+    frame: 'portrait',
   },
+
   {
-    id: 'music-development-club',
-    title: 'Music Development Club',
-    role: 'Founder',
-    dates: '',
-    summary:
-      'A classical-music education program designed to help students better understand and appreciate classical music.',
-    details:
-      'I founded and designed the program, which reached approximately 50 students. I was responsible for teaching, curriculum/program design, marketing, recruitment, and overall direction.',
-    categories: ['Music', 'Education', 'Leadership'],
+    title: 'First Concerto',
+    caption: 'Beethoven Piano Concerto No. 1',
+    date: '2019',
+    frame: 'landscape',
   },
+
   {
-    id: 'competitive-debate',
-    title: 'Competitive Debate',
-    role: 'Captain & Competitor',
-    dates: '2019–2026',
-    summary:
-      'Seven years of competitive debate focused on persuasive communication, research, public speaking, and rapid analysis.',
-    details:
-      'I served as debate captain, helped organize weekly mock debates and training, represented Nova Scotia at three national competitions, and earned five provincial first-place finishes.',
-    categories: ['Communication', 'Leadership'],
+    title: 'Taylor Academy',
+    caption: 'Young Artist Program · Piano',
+    date: '2021',
+    frame: 'portrait',
+  },
+
+  {
+    title: 'Orford Music Academy',
+    caption: 'Piano · Performance',
+    date: '2022',
+    frame: 'landscape',
+  },
+
+  {
+    title: 'Juilliard Pre-College',
+    caption: 'Piano · New York',
+    date: '2022',
+    frame: 'portrait',
+  },
+
+  {
+    title: 'Trasimeno Music Festival',
+    caption: 'Piano · Italy',
+    date: '2023',
+    frame: 'landscape',
+  },
+
+  {
+    title: 'Symphony Nova Scotia',
+    caption: 'Mendelssohn Piano Concerto No. 1',
+    date: '2023',
+    frame: 'landscape',
+  },
+
+  {
+    title: 'Musical Development Club',
+    caption: 'Founder · 50+ Students · Music Education',
+    date: '2023',
+    frame: 'square',
+  },
+
+  {
+    title: 'Computational Music Analysis',
+    caption: 'Python · music21 · Music Research',
+    date: '2023',
+    frame: 'film',
+  },
+
+  {
+    title: 'Chopin Research',
+    caption: 'Musicology · Performance Research',
+    date: '2024',
+    frame: 'portrait',
+  },
+
+  {
+    title: 'The Prelude to University',
+    caption: 'Director · Filmmaker · Editor',
+    date: '2024',
+    frame: 'film',
+  },
+
+  {
+    title: 'IB Notes Initiative',
+    caption: 'Education · Resource Design',
+    date: '2024',
+    frame: 'landscape',
+  },
+
+  {
+    title: 'The Berkeley',
+    caption: 'Weekly Lecture-Recitals · 25+ Seniors',
+    date: '2024',
+    frame: 'portrait',
+  },
+
+  {
+    title: 'Chopin Piano Concerto',
+    caption: 'Concerto Performance',
+    date: '2024',
+    frame: 'landscape',
+  },
+
+  {
+    title: 'Aspen Music Festival',
+    caption: 'Full-Fellowship Pianist',
+    date: '2025',
+    frame: 'portrait',
   },
 ]
 
+
+function EventCard({ event }) {
+  return (
+    <article className={`experience-piece ${event.frame}`}>
+
+      <div className="experience-image">
+        {event.image && (
+          <img
+            src={event.image}
+            alt={event.imageAlt || event.title}
+          />
+        )}
+      </div>
+
+      <div className="experience-caption">
+        <span>{event.date}</span>
+        <h3>{event.title}</h3>
+        <p>{event.caption}</p>
+      </div>
+
+    </article>
+  )
+}
+
+
 function Experience() {
-  const [activeFilter, setActiveFilter] = useState('All')
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  const visibleExperiences = activeFilter === 'All'
-    ? experiences
-    : experiences.filter((experience) => experience.categories.includes(activeFilter))
+  const previousEvent = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1)
+    }
+  }
 
-  function getFilterCount(filter) {
-    if (filter === 'All') return experiences.length
-    return experiences.filter((experience) => experience.categories.includes(filter)).length
+  const nextEvent = () => {
+    if (currentIndex < events.length - 1) {
+      setCurrentIndex(currentIndex + 1)
+    }
   }
 
   return (
-    <section className="experience" id="experience" aria-labelledby="experience-title">
-      <div className="experience-inner">
-        <header className="experience-intro">
-          <h2 id="experience-title">Experience</h2>
-        </header>
+    <section className="experience">
 
-        <div className="experience-filters" aria-label="Filter experiences by category">
-          {filters.map((filter) => {
-            const isActive = activeFilter === filter
+      <div className="experience-heading">
+        <p>Selected Experience</p>
+        <h2>My life in motion.</h2>
+      </div>
 
-            return (
-              <button
-                type="button"
-                key={filter}
-                className={isActive ? 'experience-filter active' : 'experience-filter'}
-                aria-pressed={isActive}
-                onClick={() => setActiveFilter(filter)}
-              >
-                <span>{filter}</span>
-                <span className="experience-filter-count">{getFilterCount(filter)}</span>
-              </button>
-            )
-          })}
-        </div>
 
-        <div className="experience-list" aria-live="polite">
-          <ul role="list">
-          {visibleExperiences.map((experience) => (
-            <li className="experience-row" key={experience.id}>
-              <article>
-                <div className="experience-row-heading">
-                  <h3>{experience.title}</h3>
-                  <p className="experience-role">
-                    {experience.role}
-                    {experience.dates && <span> · {experience.dates}</span>}
-                  </p>
-                </div>
+      <div className="experience-gallery">
 
-                <div className="experience-row-copy">
-                  <p className="experience-summary">{experience.summary}</p>
-                  <p className="experience-details">{experience.details}</p>
-                </div>
-              </article>
-            </li>
+        <motion.div
+          className="experience-track"
+          animate={{
+            x: `calc(-${currentIndex} * (45vw + 80px))`
+          }}
+          transition={{
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1]
+          }}
+        >
+          {events.map((event) => (
+            <EventCard
+              key={`${event.date}-${event.title}`}
+              event={event}
+            />
           ))}
-          </ul>
-        </div>
+        </motion.div>
+
+      </div>
+
+
+      <div className="experience-controls">
+
+        <button
+          type="button"
+          onClick={previousEvent}
+          disabled={currentIndex === 0}
+          aria-label="Previous experience"
+        >
+          ←
+        </button>
+
+        <span>
+          {currentIndex + 1} / {events.length}
+        </span>
+
+        <button
+          type="button"
+          onClick={nextEvent}
+          disabled={currentIndex === events.length - 1}
+          aria-label="Next experience"
+        >
+          →
+        </button>
+
       </div>
     </section>
   )
 }
+
 
 export default Experience
