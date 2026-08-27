@@ -1,0 +1,392 @@
+/* BUTTON */
+.return-home {
+  display: block;
+
+  width: min(100%, 1200px);
+  margin: 0 auto 60px;
+
+  text-align: left;
+  color: black;
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  transition:
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.return-home:hover {
+  color: #211d18;
+  transform: translateX(-4px);
+}
+
+
+
+/* REPERTOIRE */
+.repertoire-skills {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 90px 48px 140px;
+
+  background: #f7f6f2;
+  color: #211d18;
+
+  box-sizing: border-box;
+}
+
+.repertoire-header {
+  width: min(100%, 1200px);
+  margin: 0 auto 90px;
+  text-align: left;
+}
+
+.repertoire-label {
+  margin: 0 0 28px;
+
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  color: rgba(33, 29, 24, 0.45);
+}
+
+.repertoire-header h1 {
+  margin: 0;
+
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(70px, 10vw, 80px);
+  font-weight: 300;
+
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+
+  color: #211d18;
+}
+
+.repertoire-intro {
+  width: min(100%, 460px);
+
+  margin: 38px 0 0;
+
+  font-size: 15px;
+  line-height: 1.6;
+
+  color: rgba(33, 29, 24, 0.58);
+}
+
+
+.repertoire-tabs {
+  width: min(100%, 1200px);
+  margin: 0 auto 80px;
+
+  display: flex;
+  gap: 36px;
+
+  border-bottom: 1px solid rgba(33, 29, 24, 0.18);
+}
+
+.repertoire-tabs button {
+  position: relative;
+
+  padding: 0 0 14px;
+
+  border: 0;
+
+  background: none;
+  color: rgba(33, 29, 24, 0.42);
+
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: color 200ms ease;
+}
+
+.repertoire-tabs button:hover {
+  color: #211d18;
+}
+
+.repertoire-tabs button.active {
+  color: #211d18;
+}
+
+.repertoire-tabs button.active::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -1px;
+
+  height: 2px;
+
+  background: #211d18;
+}
+
+
+.repertoire-catalogue {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+}
+
+
+/* One composer */
+
+.composer {
+  display: grid;
+
+  /*
+    Composer name occupies the left column.
+    Repertoire occupies the larger right column.
+  */
+  grid-template-columns: 0.8fr 1.6fr;
+
+  gap: 70px;
+
+  padding: 45px 0;
+
+  border-top: 1px solid rgba(33, 29, 24, 0.14);
+}
+
+.composer:last-child {
+  border-bottom: 1px solid rgba(33, 29, 24, 0.14);
+}
+
+
+.composer-heading {
+  text-align: left;
+}
+
+.composer-heading h2 {
+  margin: 0;
+
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(30px, 3vw, 46px);
+  font-weight: 350;
+
+  line-height: 1;
+  letter-spacing: -0.025em;
+
+  color: #211d18;
+}
+
+
+.composer-works {
+  text-align: left;
+}
+
+.composer-works p {
+  margin: 0;
+
+  padding: 10px 0;
+
+  border-bottom: 1px solid rgba(33, 29, 24, 0.07);
+
+  font-size: 14px;
+  line-height: 1.45;
+
+  color: rgba(33, 29, 24, 0.72);
+
+  transition:
+    padding-left 200ms ease,
+    color 200ms ease;
+}
+
+.composer-works p:first-child {
+  padding-top: 0;
+}
+
+.composer-works p:last-child {
+  border-bottom: 0;
+}
+
+
+.composer-works p:hover {
+  padding-left: 8px;
+  color: #211d18;
+}
+
+
+/* ===== MOBILE ===== */
+@media (max-width: 700px) {
+
+  .repertoire-skills {
+    padding: 65px 20px 90px;
+  }
+
+  .repertoire-header {
+    margin-bottom: 65px;
+  }
+
+  .repertoire-header h1 {
+    font-size: clamp(58px, 19vw, 90px);
+  }
+
+  .repertoire-tabs {
+    gap: 24px;
+    margin-bottom: 55px;
+  }
+
+  .composer {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+
+    padding: 38px 0;
+  }
+
+  .composer-heading h2 {
+    font-size: 32px;
+  }
+
+  .composer-works p {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================
+   TECHNOLOGY SKILLS
+   ========================= */
+
+.tech-skills {
+  width: min(100%, 1200px);
+
+  margin: 150px auto 0;
+  padding-top: 70px;
+
+  border-top: 1px solid rgba(33, 29, 24, 0.18);
+
+  text-align: left;
+}
+
+.tech-skills-header {
+  margin-bottom: 70px;
+}
+
+.tech-skills-header p {
+  margin: 0 0 16px;
+
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  color: rgba(33, 29, 24, 0.45);
+}
+
+.tech-skills-header h1 {
+  margin: 0;
+
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(60px, 8vw, 110px);
+  font-weight: 300;
+
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+
+  color: #211d18;
+}
+
+
+/* SKILL CATEGORIES */
+
+.tech-skills-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  column-gap: 80px;
+}
+
+
+.tech-skill-group {
+  display: grid;
+
+  grid-template-columns: 160px 1fr;
+
+  gap: 30px;
+
+  padding: 28px 0;
+
+  border-top: 1px solid rgba(33, 29, 24, 0.14);
+}
+
+
+.tech-skill-group h2 {
+  margin: 0;
+
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+
+  color: #211d18;
+}
+
+
+/* INDIVIDUAL SKILLS */
+
+.tech-skill-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+
+.tech-skill-list span {
+  padding: 6px 11px;
+
+  border: 1px solid rgba(33, 29, 24, 0.16);
+  border-radius: 999px;
+
+  font-size: 11px;
+  letter-spacing: 0.04em;
+
+  color: rgba(33, 29, 24, 0.68);
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+
+.tech-skill-list span:hover {
+  color: #211d18;
+
+  border-color: rgba(33, 29, 24, 0.4);
+
+  transform: translateY(-2px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .tech-skills {
+    margin-top: 100px;
+    padding-top: 50px;
+  }
+
+  .tech-skills-header {
+    margin-bottom: 50px;
+  }
+
+  .tech-skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-skill-group {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+}

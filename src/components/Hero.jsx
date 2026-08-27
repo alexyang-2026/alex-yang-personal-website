@@ -1,4 +1,4 @@
-import { m, motion } from 'motion/react'
+import { motion } from 'motion/react'
 import { ArrowRight } from 'lucide-react'
 
 // Import the image so Vite can include and optimize/reference the asset correctly
@@ -9,6 +9,7 @@ const navLinks = [
     { label: 'Work', href: '#work' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact'},
+    { label: 'Repertoire & Skills', href: '/repertoire-skills'},
 ]
 
 // Here define the visual states that Motion can animate between
