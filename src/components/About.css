@@ -1,0 +1,165 @@
+.about {
+  width: 100%;
+  padding: clamp(90px, 11vw, 150px) 48px;
+
+  background: #ffffff;
+  color: #211d18;
+}
+
+.about-inner {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+
+  gap: 80px;
+}
+
+
+/* IMAGE */
+.about-image {
+  position: relative;
+}
+
+.about-image img {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+}
+
+.about-image::after {
+  content: '';
+
+  position: absolute;
+
+  top: 14px;
+  left: 14px;
+
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid rgba(33, 29, 24, 0.18);
+
+  z-index: -1;
+}
+
+
+/* CONTENT */
+
+.about-content {
+  width: 100%;
+}
+
+.about-label {
+  margin: 0 0 32px;
+  text-align: center;
+
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  color: rgba(33, 29, 24, 0.5);
+}
+
+.about-content h2 {
+  width: 100%;
+  margin: 0;
+
+  font-family: 'Fraunces', serif;
+  font-size: clamp(3rem, 5vw, 5.4rem);
+  font-weight: 400;
+
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+
+  text-align: center;
+}
+
+
+/* BODY COPY */
+.about-copy {
+  width: min(100%, 430px);
+  margin: 42px auto 0;
+
+  text-align: center;
+}
+
+.about-copy p {
+  margin: 0;
+
+  font-size: 0.95rem;
+  line-height: 1.7;
+
+  color: #211d18;
+}
+
+.about-copy p + p {
+  margin-top: 18px;
+
+  color: rgba(33, 29, 24, 0.62);
+}
+
+
+/* SMALL INTEREST INDEX */
+
+.about-interests {
+  display: flex;
+  flex-wrap: wrap;
+
+  column-gap: 26px;
+  row-gap: 8px;
+
+  margin-top: 38px;
+  padding-top: 18px;
+
+  border-top: 1px solid rgba(33, 29, 24, 0.16);
+}
+
+.about-interests span {
+  font-size: 0.68rem;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: rgba(33, 29, 24, 0.55);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .about {
+    padding: 72px 20px;
+  }
+
+  .about-inner {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+  .about-image {
+    width: min(88%, 430px);
+  }
+
+  .about-content {
+    max-width: none;
+  }
+
+  .about-label {
+    margin-bottom: 24px;
+  }
+
+  .about-content h2 {
+    font-size: clamp(3rem, 13vw, 4.5rem);
+  }
+
+  .about-copy {
+    margin-top: 32px;
+  }
+}
