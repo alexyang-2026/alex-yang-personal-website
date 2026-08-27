@@ -1,0 +1,300 @@
+.project-gallery {
+  position: relative;
+
+  width: 100%;
+
+  /* Main height control for the entire gallery. */
+  height: 78vh;
+  min-height: 620px;
+
+  overflow: hidden;
+
+  color: white;
+}
+
+.gallery-viewport {
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* INDIVIDUAL PROJECT SLIDES */
+.gallery-slide {
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+
+  /*Prevent Flexbox from shrinking the slides so that multiple projects fit on one screen. */
+  flex-shrink: 0;
+
+  overflow: hidden;
+}
+
+
+/*
+  The immersive background image or video.
+
+  Because both <img> and <video> receive this class,
+  the same styling works for either media type.
+*/
+.gallery-background {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: 0;
+}
+
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: var(--gallery-overlay);
+
+  z-index: 1;
+}
+
+
+.gallery-slide-content {
+  position: relative;
+  z-index: 2;
+
+  /*
+    Fill the gallery slide rather than the entire viewport.
+  */
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 70px 48px 80px;
+
+  box-sizing: border-box;
+
+  color: var(--gallery-text);
+}
+
+
+/* Small category/year text above the project title. */
+.gallery-meta {
+  margin: 0 0 10px;
+
+  font-size: 0.7rem;
+  font-weight: 400;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: var(--gallery-muted);
+}
+
+.gallery-slide-content h2 {
+  margin: 0;
+
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-weight: 400;
+
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+
+  color: var(--gallery-text);
+}
+
+.gallery-project-visual {
+  width: min(55vw, 700px);
+
+  margin-top: 24px;
+}
+
+
+.gallery-project-visual img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+.gallery-view-project {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 18px;
+  padding-bottom: 5px;
+
+  color: var(--gallery-text);
+
+  font-size: 0.7rem;
+  font-weight: 400;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  border-bottom: 1px solid var(--gallery-muted);
+
+  transition: opacity 200ms ease;
+}
+
+
+.gallery-view-project:hover {
+  opacity: 0.6;
+}
+
+
+/* STATIONARY GALLERY INTERFACE */
+.gallery-interface {
+  position: absolute;
+  inset: 0;
+
+  z-index: 10;
+
+  /* Prevent this invisible full-screen layer from blocking clicks on the project itself. */
+  pointer-events: none;
+}
+
+
+/* "Selected Projects" label in the upper-left corner. */
+.gallery-label {
+  position: absolute;
+
+  top: 28px;
+  left: 36px;
+
+  margin: 0;
+
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* =========================================================
+   CAROUSEL CONTROLS
+   ========================================================= */
+
+/*
+  Keep the navigation centered at the bottom while
+  the project slides move underneath it.
+*/
+.gallery-controls {
+  position: absolute;
+
+  bottom: 24px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  /*
+    .gallery-interface disables pointer events,
+    so turn them back on specifically for the controls.
+  */
+  pointer-events: auto;
+}
+
+
+.gallery-controls button {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Only these colors are theme-dependent. */
+  border: 1px solid var(--interface-border);
+  border-radius: 50%;
+
+  background: transparent;
+  color: var(--interface-text);
+
+  cursor: pointer;
+
+  transition:
+    color 300ms ease,
+    border-color 300ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.gallery-controls button:hover {
+  background: var(--interface-hover);
+}
+
+.gallery-controls button:active {
+  transform: scale(0.94);
+}
+
+
+/* Current project indicator: 1 / 2 */
+.gallery-controls span {
+  min-width: 54px;
+
+  text-align: center;
+
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--interface-text);
+}
+
+
+/* ===== THEMES ===== */
+/* Dark project environments such as Postcards Home */
+.gallery-slide.dark {
+  --gallery-text: #ffffff;
+  --gallery-muted: rgba(255, 255, 255, 0.75);
+  --gallery-overlay: rgba(0, 0, 0, 0.28);
+}
+
+
+/* Light project environments such as Alex Yang Education */
+.gallery-slide.light {
+  --gallery-text: #211d18;
+  --gallery-muted: rgba(33, 29, 24, 0.7);
+  --gallery-overlay: rgba(255, 248, 235, 0.08);
+}
+
+/* Stationary interface on a dark project */
+.gallery-interface.dark {
+  --interface-text: #ffffff;
+  --interface-border: rgba(255, 255, 255, 0.5);
+  --interface-hover: rgba(255, 255, 255, 0.12);
+}
+
+
+/* Stationary interface on a light project */
+.gallery-interface.light {
+  --interface-text: #211d18;
+  --interface-border: rgba(33, 29, 24, 0.5);
+  --interface-hover: rgba(33, 29, 24, 0.1);
+}
