@@ -3,7 +3,6 @@ import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import heroVideo from '../assets/hero.mp4'
-import heroPoster from '../assets/hero-poster.jpg'
 
 // Create an array of objects that will be part of the navigation bar
 const navLinks = [
@@ -90,8 +89,7 @@ function Hero() {
                 <video
                     className="hero-video"
                     src={heroVideo}
-                    poster={heroPoster}
-                    preload="metadata"
+                    preload="auto"
                     autoPlay
                     loop
                     muted
