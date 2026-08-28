@@ -11,22 +11,6 @@
   overflow: hidden;
 }
 
-/* Softens the overlap where Deep Sea Shimmer dissolves into Gold Shimmer. */
-.selected-work::before {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 210px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  mask-image: linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
-  pointer-events: none;
-}
-
 .selected-work-background {
   position: absolute;
   inset: 0;
@@ -53,6 +37,8 @@
   object-fit: cover;
 
   z-index: -1;
+
+  /* This crossfade replaces backdrop blur so WebKit and Chromium match better */
   mask-image: linear-gradient(to bottom, transparent 0, black 130px);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 130px);
 }
@@ -427,12 +413,6 @@
   .selected-work {
     margin-top: -72px;
     padding: 124px 20px 52px;
-  }
-
-  .selected-work::before {
-    height: 96px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
   }
 
   .computational-musicology-bg {

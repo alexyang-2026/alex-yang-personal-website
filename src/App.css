@@ -11,6 +11,9 @@ h1, h2, h3, h4, h5, h6 {
 .hero {
   position: relative;
   z-index: 0;
+
+  /* Makes the hero its own layer group
+     this keeps its z-index values from mixing with the next sections */
   isolation: isolate;
 
   width: 100%;
@@ -21,11 +24,76 @@ h1, h2, h3, h4, h5, h6 {
 
   overflow: hidden;
 
+  background: #000000;
   color: white;
 }
 
 .hero h1 {
   font-weight: bolder;
+}
+
+.hero-reveal {
+  /* Fill the hero without taking up layout space */
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  overflow: hidden;
+
+  /* These two hints help the browser keep the video on a smooth GPU layer */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/*
+  Four black panels cover the already full-size video
+  we move the panels instead of resizing the video so its crop never changes
+*/
+.hero-curtain {
+  position: absolute;
+  z-index: 3;
+  background: #000000;
+
+  /* The invisible curtains shouldn't block links after they move away */
+  pointer-events: none;
+
+  /* Tell the browser ahead of time that transform is the part about to move
+     transform animation is usually much smoother than changing width and height */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.hero-curtain-top,
+.hero-curtain-bottom {
+  left: 0;
+  width: 100%;
+
+  /* The extra pixel prevents a tiny seam between opposite curtains */
+  height: calc(50% + 1px);
+}
+
+.hero-curtain-top {
+  top: 0;
+}
+
+.hero-curtain-bottom {
+  bottom: 0;
+}
+
+.hero-curtain-left,
+.hero-curtain-right {
+  top: 0;
+  /* Same extra pixel here so the center can't flash through as they move */
+  width: calc(50% + 1px);
+  height: 100%;
+}
+
+.hero-curtain-left {
+  left: 0;
+}
+
+.hero-curtain-right {
+  right: 0;
 }
 
 
@@ -47,7 +115,8 @@ h1, h2, h3, h4, h5, h6 {
 
   object-fit: cover;
 
-  z-index: -1;
+  z-index: 0;
+  backface-visibility: hidden;
 }
 
 
@@ -64,7 +133,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Navigation sits over the photograph and overlay. */
 .hero-nav {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   display: flex;
   align-items: center;
@@ -103,7 +172,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   min-height: calc(100vh - 100px);
 

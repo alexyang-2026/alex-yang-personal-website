@@ -11,10 +11,12 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 // Foreground images show the actual project
 import postcardsProjectImage from '../assets/projects/postcards-home.png'
 import educationProjectImage from '../assets/projects/alex-yang-education.png'
+import chopinResearchProjectImage from '../assets/projects/chopin-research.png'
 
 // Background images create a different visual environment for each project
 import postcardsBackground from '../assets/projects/postcards-background.mp4'
 import educationBackground from '../assets/projects/education-background.png'
+import chopinResearchBackground from '../assets/projects/chopin-research-background.mp4'
 
 import goldShimmer from '../assets/gold-shimmer.mp4'
 
@@ -32,25 +34,35 @@ const projects = [
     background: postcardsBackground,
     backgroundType: 'video',
 
-    // White interface/text for the dark background.
+    // White interface/text for the dark background
     theme: 'dark',
-
-    href: '#',
+    href: 'https://postcards-home.alexyang2020.workers.dev/',
   },
 
   {
     id: 2,
     title: 'Alex Yang Education',
-    category: 'Education & Web Design',
+    category: 'Education & Minimalist Web Design',
     year: '2026',
     projectImage: educationProjectImage,
     background: educationBackground,
     backgroundType: 'image',
 
-    // Dark ink-like interface/text for the paper background.
+    // Dark ink-like interface/text for the paper background
     theme: 'light',
+    href: 'https://alexyangeducation.netlify.app/',
+  },
 
-    href: '#',
+  {
+    id: 3,
+    title: 'A Computational Investigation Into Narrative Arc in Chopin\'s 24 Preludes, Op.28',
+    category: 'Computational Musicology Research with Python',
+    tear: '2025',
+    projectImage: chopinResearchProjectImage,
+    background: chopinResearchBackground,
+    backgroundType: 'video',
+    theme: 'dark',
+    href: 'https://drive.google.com/drive/u/0/folders/1D4P5tnwYRgQT2YP4YiZlq-LQhI6loQmA'
   },
 ]
 

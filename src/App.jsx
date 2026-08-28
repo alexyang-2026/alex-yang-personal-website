@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import Hero from './components/Hero'
@@ -15,9 +16,17 @@ import './App.css'
 import SplashCursor from './components/SplashCursor'
 
 function Home() {
+  const [cursorReady, setCursorReady] = useState(false)
+
+  useEffect(() => {
+    const startCursor = () => setCursorReady(true)
+    const timer = window.setTimeout(startCursor, 1200)
+    return () => window.clearTimeout(timer)
+  }, [])
+
   return (
     <>
-      <SplashCursor
+      {cursorReady && <SplashCursor
         DENSITY_DISSIPATION={3.5}
         VELOCITY_DISSIPATION={1}
         PRESSURE={0.15}
@@ -27,7 +36,7 @@ function Home() {
         COLOR_UPDATE_SPEED={15}
         SHADING
         RAINBOW_MODE={true}
-    />
+      />}
       <Hero />
       <About />
       <SelectedWork />

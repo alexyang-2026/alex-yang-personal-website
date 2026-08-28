@@ -1,5 +1,5 @@
 import './About.css'
-import aboutImage from '../assets/about.png'
+import aboutImage from '../assets/about-optimized.jpg'
 import deepseaShimmer from '../assets/deepseaShimmer.mp4'
 import ElasticMesh from './ElasticMesh'
 
