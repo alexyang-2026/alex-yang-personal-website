@@ -13,6 +13,15 @@ const navLinks = [
     { label: 'Repertoire & Skills', to: '/repertoire-skills'},
 ]
 
+// The loader cycles through these facts while the hero video gets ready.
+const funFacts = [
+    'A cloud can weigh more than a million pounds.',
+    'An octopus has three hearts.',
+    'A day on Venus is longer than a year on Venus.',
+    'Sharks existed before trees.',
+    'A piano contains thousands of individual parts.',
+]
+
 // These are the two versions of the hero text Motion switches between
 // keeping them here makes the timing easy to adjust without digging through the JSX
 const contentVariants = {
@@ -66,12 +75,12 @@ const navigationVariants = {
 }
 
 function Hero() {
-    // Some people ask their device for less animation
-    // for them we skip the intro and show the finished hero right away
+    // Some people ask their device for less animation. For them we skip the intro and show the finished hero right away
     const prefersReducedMotion = useReducedMotion()
     const [heroReady, setHeroReady] = useState(false)
     const [autoplayBlocked, setAutoplayBlocked] = useState(false)
     const [loadProgress, setLoadProgress] = useState(0)
+    const [factIndex, setFactIndex] = useState(0)
     const videoRef = useRef(null)
 
     useEffect(() => {
@@ -83,6 +92,18 @@ function Hero() {
         }, 8000)
         return () => window.clearTimeout(fallbackTimer)
     }, [])
+
+    useEffect(() => {
+        if (heroReady) return
+
+        // Move to the next fact every three seconds, then loop back to the first one.
+        const factTimer = window.setInterval(() => {
+            setFactIndex((currentIndex) => (currentIndex + 1) % funFacts.length)
+        }, 3000)
+
+        // Clear the timer once loading finishes or the Hero leaves the page.
+        return () => window.clearInterval(factTimer)
+    }, [heroReady])
 
     const startHeroVideo = () => {
         const video = videoRef.current
@@ -139,7 +160,7 @@ function Hero() {
             >
                 <p className="hero-loader-title">Loading Your Immersive Experience...</p>
                 <p className="hero-loader-fact">
-                    Fun fact: a cloud can weigh up to a million pounds!.
+                    Fun fact: {funFacts[factIndex]}
                 </p>
                 <div
                     className="hero-loader-progress"
@@ -154,7 +175,7 @@ function Hero() {
                 <p className="hero-loader-percent">{loadProgress}%</p>
                 {autoplayBlocked && (
                     <button className="hero-loader-play" type="button" onClick={startHeroVideo}>
-                        Tap to enter
+                        First time visiting? It may take a bit longer to load...
                     </button>
                 )}
             </motion.div>
