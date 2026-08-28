@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -70,11 +70,28 @@ function Hero() {
     // for them we skip the intro and show the finished hero right away
     const prefersReducedMotion = useReducedMotion()
     const [heroReady, setHeroReady] = useState(false)
+    const [autoplayBlocked, setAutoplayBlocked] = useState(false)
+    const videoRef = useRef(null)
 
     useEffect(() => {
-        const fallbackTimer = window.setTimeout(() => setHeroReady(true), 8000)
+        const fallbackTimer = window.setTimeout(() => {
+            const video = videoRef.current
+            video?.load()
+            video?.play().catch(() => setAutoplayBlocked(true))
+            setAutoplayBlocked(true)
+        }, 8000)
         return () => window.clearTimeout(fallbackTimer)
     }, [])
+
+    const startHeroVideo = () => {
+        const video = videoRef.current
+        setAutoplayBlocked(false)
+
+        if (video?.error) video.load()
+
+        const playAttempt = video?.play()
+        playAttempt?.catch(() => setAutoplayBlocked(true))
+    }
 
     // HashRouter already uses the # part of the URL for page routes
     // so we scroll ourselves instead of letting links like #work replace that route
@@ -103,6 +120,11 @@ function Hero() {
                 <p className="hero-loader-fact">
                     Fun fact: a cloud can weigh up to a million pounds!.
                 </p>
+                {autoplayBlocked && (
+                    <button className="hero-loader-play" type="button" onClick={startHeroVideo}>
+                        Tap to enter
+                    </button>
+                )}
             </motion.div>
 
             <section className="hero">
@@ -110,6 +132,7 @@ function Hero() {
                 the black curtains above it are the only things that move */}
             <div className="hero-reveal">
                 <video
+                    ref={videoRef}
                     className="hero-video"
                     src={heroVideo}
                     preload="auto"
@@ -117,8 +140,9 @@ function Hero() {
                     loop
                     muted
                     playsInline
-                    onCanPlay={() => setHeroReady(true)}
-                    onCanPlayThrough={() => setHeroReady(true)}
+                    onCanPlay={startHeroVideo}
+                    onPlaying={() => setHeroReady(true)}
+                    onError={() => setAutoplayBlocked(true)}
                 />
             </div>
 

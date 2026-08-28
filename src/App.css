@@ -66,6 +66,20 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.hero-loader-play {
+  padding: 8px 0;
+
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  color: #ffffff;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .hero-reveal {
   /* Fill the hero without taking up layout space */
   position: absolute;
