@@ -71,6 +71,7 @@ function Hero() {
     const prefersReducedMotion = useReducedMotion()
     const [heroReady, setHeroReady] = useState(false)
     const [autoplayBlocked, setAutoplayBlocked] = useState(false)
+    const [loadProgress, setLoadProgress] = useState(0)
     const videoRef = useRef(null)
 
     useEffect(() => {
@@ -91,6 +92,26 @@ function Hero() {
 
         const playAttempt = video?.play()
         playAttempt?.catch(() => setAutoplayBlocked(true))
+    }
+
+    // The browser tells us how many seconds of the hero video it has buffered.
+    // Comparing that amount with the full duration gives the loader a real percentage.
+    const updateLoadProgress = () => {
+        const video = videoRef.current
+
+        if (!video?.duration || video.buffered.length === 0) return
+
+        const bufferedUntil = video.buffered.end(video.buffered.length - 1)
+        const nextProgress = Math.min(99, Math.round((bufferedUntil / video.duration) * 100))
+
+        // Never let the number move backward if the browser adjusts its buffer.
+        setLoadProgress((currentProgress) => Math.max(currentProgress, nextProgress))
+    }
+
+    // Reaching the playing event means the critical hero experience is ready.
+    const finishLoading = () => {
+        setLoadProgress(100)
+        setHeroReady(true)
     }
 
     // HashRouter already uses the # part of the URL for page routes
@@ -120,6 +141,17 @@ function Hero() {
                 <p className="hero-loader-fact">
                     Fun fact: a cloud can weigh up to a million pounds!.
                 </p>
+                <div
+                    className="hero-loader-progress"
+                    role="progressbar"
+                    aria-label="Loading hero video"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow={loadProgress}
+                >
+                    <span style={{ width: `${loadProgress}%` }} />
+                </div>
+                <p className="hero-loader-percent">{loadProgress}%</p>
                 {autoplayBlocked && (
                     <button className="hero-loader-play" type="button" onClick={startHeroVideo}>
                         Tap to enter
@@ -140,8 +172,9 @@ function Hero() {
                     loop
                     muted
                     playsInline
+                    onProgress={updateLoadProgress}
                     onCanPlay={startHeroVideo}
-                    onPlaying={() => setHeroReady(true)}
+                    onPlaying={finishLoading}
                     onError={() => setAutoplayBlocked(true)}
                 />
             </div>

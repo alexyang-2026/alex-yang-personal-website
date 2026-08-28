@@ -66,6 +66,32 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.hero-loader-progress {
+  width: min(72vw, 280px);
+  height: 3px;
+
+  overflow: hidden;
+  background: rgba(183, 255, 60, 0.18);
+}
+
+.hero-loader-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+
+  background: #b7ff3c;
+  box-shadow: 0 0 10px rgba(183, 255, 60, 0.55);
+  transition: width 180ms ease-out;
+}
+
+.hero-loader-percent {
+  margin: -8px 0 0;
+
+  color: #b7ff3c;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
 .hero-loader-play {
   padding: 8px 0;
 
