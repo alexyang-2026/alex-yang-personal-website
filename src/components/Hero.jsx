@@ -117,6 +117,7 @@ function Hero() {
                     loop
                     muted
                     playsInline
+                    onCanPlay={() => setHeroReady(true)}
                     onCanPlayThrough={() => setHeroReady(true)}
                 />
             </div>
