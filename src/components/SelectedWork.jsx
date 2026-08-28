@@ -95,6 +95,7 @@ function SelectedWork() {
             loop
             muted
             playsInline
+            preload="none"
           />
           <div className="selected-work-header">
             <h2 id="selected-work-title">Selected Technology & Research Projects</h2>
@@ -144,6 +145,7 @@ function SelectedWork() {
                                     loop
                                     muted
                                     playsInline
+                                    preload="none"
                                 />
                             ) : (
                                 <img

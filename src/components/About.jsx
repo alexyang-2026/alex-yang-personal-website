@@ -13,6 +13,7 @@ function About() {
         loop
         muted
         playsInline
+        preload="none"
       />
       <div className="about-inner">
         <div className="about-image">
