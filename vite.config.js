@@ -3,6 +3,6 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/alex-yang-personal-website/',
+  base: '/',
   plugins: [react()],
 })
