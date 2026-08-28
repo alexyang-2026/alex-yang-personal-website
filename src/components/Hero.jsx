@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -68,6 +69,12 @@ function Hero() {
     // Some people ask their device for less animation
     // for them we skip the intro and show the finished hero right away
     const prefersReducedMotion = useReducedMotion()
+    const [heroReady, setHeroReady] = useState(false)
+
+    useEffect(() => {
+        const fallbackTimer = window.setTimeout(() => setHeroReady(true), 8000)
+        return () => window.clearTimeout(fallbackTimer)
+    }, [])
 
     // HashRouter already uses the # part of the URL for page routes
     // so we scroll ourselves instead of letting links like #work replace that route
@@ -82,7 +89,20 @@ function Hero() {
     }
 
     return (
-        <section className="hero">
+        <>
+            <motion.div
+                className="hero-loader"
+                initial={{ opacity: 1 }}
+                animate={{ opacity: heroReady ? 0 : 1 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.45 }}
+                style={{ pointerEvents: heroReady ? 'none' : 'auto' }}
+                role="status"
+                aria-label="Loading website"
+            >
+                <span>ALEX YANG</span>
+            </motion.div>
+
+            <section className="hero">
             {/* The video is full screen from the beginning and never changes size
                 the black curtains above it are the only things that move */}
             <div className="hero-reveal">
@@ -94,6 +114,7 @@ function Hero() {
                     loop
                     muted
                     playsInline
+                    onCanPlayThrough={() => setHeroReady(true)}
                 />
             </div>
 
@@ -105,25 +126,25 @@ function Hero() {
             <motion.div
                 className="hero-curtain hero-curtain-top"
                 initial={false}
-                animate={{ y: '-100%' }}
+                animate={{ y: heroReady ? '-100%' : '0%' }}
                 transition={prefersReducedMotion ? { duration: 0 } : curtainTransition}
             />
             <motion.div
                 className="hero-curtain hero-curtain-right"
                 initial={false}
-                animate={{ x: '100%' }}
+                animate={{ x: heroReady ? '100%' : '0%' }}
                 transition={prefersReducedMotion ? { duration: 0 } : curtainTransition}
             />
             <motion.div
                 className="hero-curtain hero-curtain-bottom"
                 initial={false}
-                animate={{ y: '100%' }}
+                animate={{ y: heroReady ? '100%' : '0%' }}
                 transition={prefersReducedMotion ? { duration: 0 } : curtainTransition}
             />
             <motion.div
                 className="hero-curtain hero-curtain-left"
                 initial={false}
-                animate={{ x: '-100%' }}
+                animate={{ x: heroReady ? '-100%' : '0%' }}
                 transition={prefersReducedMotion ? { duration: 0 } : curtainTransition}
             />
             
@@ -133,7 +154,7 @@ function Hero() {
                 className="hero-nav"
                 variants={navigationVariants}
                 initial={prefersReducedMotion ? false : 'hidden'}
-                animate="visible"
+                animate={heroReady ? 'visible' : 'hidden'}
             >
                 <a href="#/" className ="hero-brand" onClick={scrollToTop}>
                     Alex Yang
@@ -166,7 +187,7 @@ function Hero() {
                 className="hero-content"
                 variants = {contentVariants}    // This tells the element which collection of animation states to use
                 initial={prefersReducedMotion ? false : 'hidden'}
-                animate="visible"
+                animate={heroReady ? 'visible' : 'hidden'}
             >
                 <p className="hero-eyebrow">
                     Pianist · Creator
@@ -185,7 +206,8 @@ function Hero() {
                     <ArrowRight size={16} /> 
                 </a>
             </motion.div>
-        </section>
+            </section>
+        </>
     )
 }
 

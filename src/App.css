@@ -32,6 +32,23 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bolder;
 }
 
+.hero-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: grid;
+  place-items: center;
+
+  background: #000000;
+  color: #ffffff;
+}
+
+.hero-loader span {
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+}
+
 .hero-reveal {
   /* Fill the hero without taking up layout space */
   position: absolute;
