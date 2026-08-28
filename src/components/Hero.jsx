@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import heroVideo from '../assets/hero.mp4'
 
@@ -8,7 +9,7 @@ const navLinks = [
     { label: 'Work', href: '#work' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact'},
-    { label: 'Repertoire & Skills', href: '/repertoire-skills'},
+    { label: 'Repertoire & Skills', to: '/repertoire-skills'},
 ]
 
 // Here define the visual states that Motion can animate between
@@ -54,7 +55,11 @@ function Hero() {
 
                 <div className="hero-nav-links">
                     {navLinks.map((link) => (
-                        <a key={link.label} href={link.href}>{link.label}</a>
+                        link.to ? (
+                            <Link key={link.label} to={link.to}>{link.label}</Link>
+                        ) : (
+                            <a key={link.label} href={link.href}>{link.label}</a>
+                        )
                     ))}
                 </div>
             </nav>

@@ -5,17 +5,38 @@ import './PerformanceGallery.css'
 // "youtu.be/" or after "v=" in a standard YouTube URL.
 const performances = [
   {
-    title: 'Chopin — Scherzo No. 4',
+    title: 'Chopin: Scherzo No. 4 in E Major, Op. 54',
     videoId: 'QzeGziXHtYA',
   },
   {
-    title: 'Barber — Fugue',
+    title: 'Barber — Fugue from Piano Sonata, Op. 26',
     videoId: '7nHtdfJuBmY',
   },
   {
-    title: 'Bach — Chromatic Fantasy and Fugue',
+    title: 'Bach: Chromatic Fantasy and Fugue',
     videoId: 'z6OnT3gQagw',
   },
+  {
+    title: 'Beethoven: "Emperor" Concerto with Juilliard Pre-College Orchestra',
+    videoId: '2XjsPlBxL-k'
+  },
+  {
+    title: 'Chopin: Sonata No. 2 in B-Flat Minor, Op. 35 (Canadian Chopin Competition)',
+    videoId: 'cc0ORc7WGeY'
+  },
+  {
+    title: 'Chopin: Mazurkas, Op. 24 (Canadian Chopin Competition)',
+    videoId: 'BMvI666F3R0'
+  },
+  {
+    title: 'Carl Vine: Piano Sonata No. 1 (1990)',
+    videoId: 'RsNpkuGJm2E'
+  },
+  {
+    title: 'Alex Yang\'s Short Documentary "The Prelude to University" (2024)',
+    videoId: '299guM6LqTc'
+  },
+
 ]
 
 function PerformanceGallery() {
@@ -24,7 +45,7 @@ function PerformanceGallery() {
   return (
     <section className="performance-gallery" aria-labelledby="performance-gallery-title">
       <div className="performance-heading">
-        <p>Selected performances</p>
+        <p>Selected Performances and Video Projects</p>
         <h2 id="performance-gallery-title">Watch &amp; listen.</h2>
       </div>
 
