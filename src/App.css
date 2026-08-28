@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 16px;
 
   background: #000000;
-  color: #ffffff;
+  color: black;
 }
 
 .hero-loader-title {
@@ -265,6 +265,7 @@ h1, h2, h3, h4, h5, h6 {
 
   font-size: 0.7rem;
   font-weight: 400;
+  color: black;
 
   /*
     Wide tracking gives small uppercase text that
@@ -272,8 +273,6 @@ h1, h2, h3, h4, h5, h6 {
   */
   letter-spacing: 0.22em;
   text-transform: uppercase;
-
-  color: rgba(255, 255, 255, 0.75);
 }
 
 
