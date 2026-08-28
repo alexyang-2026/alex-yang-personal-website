@@ -1,5 +1,6 @@
 // useState lets thie component remember which project the viewer is currently viewing
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // Motion will handle the transition between projects
 import { motion } from 'motion/react'
@@ -14,6 +15,8 @@ import educationProjectImage from '../assets/projects/alex-yang-education.png'
 // Background images create a different visual environment for each project
 import postcardsBackground from '../assets/projects/postcards-background.mp4'
 import educationBackground from '../assets/projects/education-background.png'
+
+import goldShimmer from '../assets/gold-shimmer.mp4'
 
 // Import the CSS
 import './SelectedWork.css'
@@ -73,8 +76,16 @@ function SelectedWork() {
 
     return (
         <section className="selected-work" id="work" aria-labelledby="selected-work-title">
+          <video
+            className="computational-musicology-bg"
+            src={goldShimmer}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
           <div className="selected-work-header">
-            <h2 id="selected-work-title">Selected Projects</h2>
+            <h2 id="selected-work-title">Selected Technology & Research Projects</h2>
           </div>
 
           <div className="selected-work-screen">
@@ -181,6 +192,10 @@ function SelectedWork() {
             </div>
           </div>
           </div>
+
+          <Link className="selected-work-more" to="/repertoire-skills">
+            For Full Repertoire List and Skills, Click Here
+          </Link>
         </section>
     )
 }

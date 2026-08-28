@@ -1,26 +1,66 @@
 .about {
-  width: 100%;
-  padding: clamp(90px, 11vw, 150px) 48px;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
 
-  background: #ffffff;
+  width: 100%;
+  margin-top: -140px;
+  padding: calc(clamp(90px, 11vw, 140px) + 160px) 48px clamp(90px, 11vw, 150px);
+
+  overflow: hidden;
+
+  background: transparent;
   color: #211d18;
 }
 
+/* Softens the overlap where the hero video dissolves into Deep Sea Shimmer */
+.about::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  mask-image: linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
+  pointer-events: none;
+}
+
 .about-inner {
+  position: relative;
+  z-index: 1;
+
   width: min(100%, 1200px);
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-
-  gap: 80px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(48px, 7vw, 80px);
 }
 
+/* BACKGROUND DEEP SEA SHIMMER */
+.about-background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  object-fit: cover;
+  z-index: -1;
+  mask-image: linear-gradient(to bottom, transparent 0, black 160px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 130px);
+}
 
 /* IMAGE */
 .about-image {
   position: relative;
+  z-index: 0;
   width: 100%;
   aspect-ratio: 4 / 5;
 }
@@ -59,7 +99,7 @@
 
 .about-label {
   margin: 0 0 32px;
-  text-align: center;
+  text-align: left;
 
   font-size: 11px;
   letter-spacing: 0.2em;
@@ -85,10 +125,10 @@
 
 /* BODY COPY */
 .about-copy {
-  width: min(100%, 430px);
-  margin: 42px auto 0;
+  width: 100%;
+  margin: 0;
 
-  text-align: center;
+  text-align: left;
 }
 
 .about-copy p {
@@ -116,7 +156,7 @@
   column-gap: 26px;
   row-gap: 8px;
 
-  margin-top: 38px;
+  margin-top: 52px;
   padding-top: 18px;
 
   border-top: 1px solid rgba(33, 29, 24, 0.16);
@@ -132,7 +172,6 @@
 }
 
 
-/* TABLET */
 @media (max-width: 900px) {
   .about-inner {
     grid-template-columns: 1fr;
@@ -145,7 +184,7 @@
   }
 
   .about-content {
-    max-width: 620px;
+    width: min(100%, 620px);
     margin: 0 auto;
   }
 }
@@ -155,13 +194,19 @@
 
 @media (max-width: 700px) {
   .about {
-    padding: 72px 20px;
+    margin-top: -72px;
+    padding: 144px 20px 72px;
   }
 
-  .about-inner {
-    grid-template-columns: 1fr;
+  .about::before {
+    height: 96px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 
-    gap: 55px;
+  .about-background {
+    mask-image: linear-gradient(to bottom, transparent 0, black 80px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 80px);
   }
 
   .about-image {
@@ -183,12 +228,13 @@
   }
 
   .about-copy {
-    margin-top: 32px;
+    margin-top: 0;
   }
 
   .about-interests {
     justify-content: center;
     column-gap: 18px;
+    margin-top: 38px;
   }
 
   .elastic-mesh {

@@ -1,8 +1,7 @@
 import { motion } from 'motion/react'
 import { ArrowRight } from 'lucide-react'
 
-// Import the image so Vite can include and optimize/reference the asset correctly
-import heroImage from '../assets/hero.png'
+import heroVideo from '../assets/hero.mp4'
 
 // Create an array of objects that will be part of the navigation bar
 const navLinks = [
@@ -36,44 +35,16 @@ const contentVariants = {
     }
 }
 
-// Create an animation specifically for the hero photograph
-// The background gets its own animation because I want it to move differently from the text.
-const imageVariants = {
-    // Begin slightly enlarged, transparent, and blurred
-    hidden: {
-        opacity: 0,
-        scale: 1.08,
-        filter: 'blur(20px)'
-    },
-
-    // Slowly settle into the final photograph
-    visible: {
-        opacity: 1,
-        scale: 1,
-        filter: 'blur(0px)',
-
-        transition: {
-            duration: 5,
-            ease: 'easeOut',
-        }
-    }
-}
-
 function Hero() {
     return (
         <section className="hero">
-            {/* 
-            motion.img works like a normal <img>, but Motion can animate it.
-            Because this image is purely visual and the page doesn't need it
-            to convey information, alt="" marks it as decorative.
-            */}
-            <motion.img
-                className="hero-background"
-                src={heroImage}
-                alt="Landing Page Image"
-                variatns={imageVariants}
-                initial="hidden"
-                animate="visible"
+            <video
+            className="hero-video"
+            src={heroVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
             />
             
             <nav className="hero-nav">

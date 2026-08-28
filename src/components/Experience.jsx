@@ -3,125 +3,168 @@ import { motion } from 'motion/react'
 
 import './Experience.css'
 
+import novaScotiaTalentTrustImage from '../assets/experience/nova-scotia-talent-trust.png'
+import governmentHouseImage from '../assets/experience/government-house.png'
+import canadianMusicCompetitionImage from '../assets/experience/canadian-music-competition.png'
+import fcmfImage from '../assets/experience/fcmf.png'
+import chopinResearchImage from '../assets/experience/chopin-research.png'
+import cbc30Under30Image from '../assets/experience/cbc-30-under-30.png'
+import cfmtaImage from '../assets/experience/cfmta.png'
+import preludeToUniversityImage from '../assets/experience/prelude-to-university.png'
+import trasimenoImage from '../assets/experience/trasimeno.png'
+import musicalDevelopmentClubImage from '../assets/experience/musical-development-club.png'
+import juilliardPreCollegeImage from '../assets/experience/juilliard-pre-college.png'
+import canadianChopinImage from '../assets/experience/canadian-chopin.png'
+import aspenImage from '../assets/experience/aspen.png'
+import goldenMelodiesImage from '../assets/experience/golden-melodies.png'
+import juilliardConcertoImage from '../assets/experience/juilliard-concerto.png'
+import torontoCompetitionImage from '../assets/experience/toronto-competition.png'
+import universityAdmissionsImage from '../assets/experience/university-admissions.png'
+import kovnerFellowshipImage from '../assets/experience/kovner-fellowship.png'
 
 const events = [
   {
     title: 'Nova Scotia Talent Trust',
-    caption: 'Scholarship Winner · Piano',
-    date: '2016',
+    caption: 'Long-Term Career Development Scholar · $33,000+ in Merit Funding',
+    date: '2016-Present',
+    image: novaScotiaTalentTrustImage,
     frame: 'portrait',
     tags: ['Music'],
   },
-
   {
-    title: 'First Concerto',
-    caption: 'Beethoven Piano Concerto No. 1',
+    title: 'Government House Recital',
+    caption: 'Invited 60-Minute Solo Recital · Lieutenant Governor’s Residence',
+    date: '2017',
+    image: governmentHouseImage,
+    frame: 'landscape',
+    tags: ['Music'],
+  },
+  {
+    title: 'Canadian Music Competition (CMC)',
+    caption: 'Grand Prize Winner · National Competition',
     date: '2019',
-    frame: 'landscape',
-    tags: ['Music'],
-  },
-
-  {
-    title: 'Taylor Academy',
-    caption: 'Young Artist Program · Piano',
-    date: '2021',
+    image: canadianMusicCompetitionImage,
     frame: 'portrait',
     tags: ['Music'],
   },
-
   {
-    title: 'Orford Music Academy',
-    caption: 'Piano · Performance',
+    title: 'FCMF National Competition',
+    caption: 'Grand Prize Winner · All Instrumental Categories',
     date: '2022',
+    image: fcmfImage,
     frame: 'landscape',
     tags: ['Music'],
   },
-
   {
-    title: 'Juilliard Pre-College',
-    caption: 'Piano · New York',
+    title: 'Research on Motivic and Thematic Coherence in Chopin\'s Polonaise-Fantasie',
+    caption: 'Musicology',
     date: '2022',
-    frame: 'portrait',
-    tags: ['Music'],
-  },
-
-  {
-    title: 'Trasimeno Music Festival',
-    caption: 'Piano · Italy',
-    date: '2023',
-    frame: 'landscape',
-    tags: ['Music'],
-  },
-
-  {
-    title: 'Symphony Nova Scotia',
-    caption: 'Mendelssohn Piano Concerto No. 1',
-    date: '2023',
-    frame: 'landscape',
-    tags: ['Music'],
-  },
-
-  {
-    title: 'Musical Development Club',
-    caption: 'Founder · 50+ Students · Music Education',
-    date: '2023',
-    frame: 'square',
-    tags: ['Music', 'Communication'],
-  },
-
-  {
-    title: 'Computational Music Analysis',
-    caption: 'Python · music21 · Music Research',
-    date: '2023',
-    frame: 'film',
-    tags: ['Music', 'Tech', 'Research'],
-  },
-
-  {
-    title: 'Chopin Research',
-    caption: 'Musicology · Performance Research',
-    date: '2024',
+    image: chopinResearchImage,
     frame: 'portrait',
     tags: ['Music', 'Research'],
   },
-
+  {
+    title: 'CBC 30 Under 30',
+    caption: 'Youngest Honoree · 30 Hot Canadian Classical Musicians Under 30',
+    date: '2023',
+    image: cbc30Under30Image,
+    frame: 'landscape',
+    tags: ['Music', 'Communication'],
+  },
+  {
+    title: 'CFMTA National Competition',
+    caption: 'Third Prize · Canadian Chopin Society Award · Most Promising Artist',
+    date: '2023',
+    image: cfmtaImage,
+    frame: 'portrait',
+    tags: ['Music'],
+  },
   {
     title: 'The Prelude to University',
-    caption: 'Director · Filmmaker · Editor',
+    caption: 'Director · Filmmaker · Editor · Atlantic International Film Festival',
     date: '2024',
+    image: preludeToUniversityImage,
     frame: 'film',
     tags: ['Tech', 'Communication'],
   },
-
   {
-    title: 'IB Notes Initiative',
-    caption: 'Education · Resource Design',
+    title: 'Angela Hewitt\'s Trasimeno Music Festival: Masterclasses',
+    caption: 'Youngest of 10 International Pianists',
     date: '2024',
-    frame: 'landscape',
-    tags: ['Tech', 'Communication'],
-  },
-
-  {
-    title: 'The Berkeley',
-    caption: 'Weekly Lecture-Recitals · 25+ Seniors',
-    date: '2024',
-    frame: 'portrait',
-    tags: ['Music', 'Communication'],
-  },
-
-  {
-    title: 'Chopin Piano Concerto',
-    caption: 'Concerto Performance',
-    date: '2024',
+    image: trasimenoImage,
     frame: 'landscape',
     tags: ['Music'],
   },
-
+  {
+    title: 'Musical Development Club',
+    caption: 'Founder · 50+ Students · Computational Music Education',
+    date: '2024',
+    image: musicalDevelopmentClubImage,
+    frame: 'square',
+    tags: ['Music', 'Tech', 'Communication'],
+  },
+  {
+    title: 'Juilliard Pre-College',
+    caption: '85% Merit Scholarship · Yoheved Kaplinsky & Emanuel Ax',
+    date: '2024',
+    image: juilliardPreCollegeImage,
+    frame: 'portrait',
+    tags: ['Music'],
+  },
+  {
+    title: 'Canadian Chopin Competition',
+    caption: 'National Top 5 · Youngest & First Nova Scotian Finalist',
+    date: '2025',
+    image: canadianChopinImage,
+    frame: 'landscape',
+    tags: ['Music'],
+  },
   {
     title: 'Aspen Music Festival',
-    caption: 'Full-Fellowship Pianist',
+    caption: 'Full Fellowship · Selected from 900+ International Applicants',
     date: '2025',
+    image: aspenImage,
+    frame: 'landscape',
+    tags: ['Music'],
+  },
+  {
+    title: 'Unveiling Golden Melodies of Classical Music',
+    caption: 'Founder · Weekly Lecture-Recitals · 25+ Seniors',
+    date: '2025',
+    image: goldenMelodiesImage,
     frame: 'portrait',
+    tags: ['Music', 'Communication'],
+  },
+  {
+    title: 'Juilliard Concerto Competition',
+    caption: 'Winner · Beethoven “Emperor” Concerto',
+    date: '2025',
+    image: juilliardConcertoImage,
+    frame: 'landscape',
+    tags: ['Music'],
+  },
+  {
+    title: 'Toronto International Piano Competition',
+    caption: 'First Prize',
+    date: '2026',
+    image: torontoCompetitionImage,
+    frame: 'landscape',
+    tags: ['Music'],
+  },
+  {
+    title: 'University Admissions',
+    caption: 'Princeton · Stanford · Columbia–Juilliard · Brown · UPenn',
+    date: '2026',
+    image: universityAdmissionsImage,
+    frame: 'square',
+    tags: ['Communication'],
+  },
+  {
+    title: 'Kovner Fellowship',
+    caption: 'The Juilliard School · Kovner Fellow',
+    date: '2026',
+    image: kovnerFellowshipImage,
+    frame: 'landscape',
     tags: ['Music'],
   },
 ]
