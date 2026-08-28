@@ -99,7 +99,10 @@ function Hero() {
                 role="status"
                 aria-label="Loading website"
             >
-                <span>ALEX YANG</span>
+                <p className="hero-loader-title">Loading Your Immersive Experience...</p>
+                <p className="hero-loader-fact">
+                    Fun fact: a cloud can weigh up to a million pounds!.
+                </p>
             </motion.div>
 
             <section className="hero">
